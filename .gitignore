@@ -1,6 +1,4 @@
 /Proxy_hw.iml
 /.idea/
 /src/runtime/main/tests/
-out/
-!/out/artifacts/Proxy_hw_jar/Proxy_hw.jar
 /src/META-INF/
