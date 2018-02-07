@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Proxy_hw:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Proxy_hw_jar</output-path>
+    <root id="archive" name="Proxy_hw.jar">
+      <element id="module-output" name="Proxy_hw" />
+    </root>
+  </artifact>
+</component>
