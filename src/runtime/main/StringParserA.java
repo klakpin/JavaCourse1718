@@ -13,17 +13,15 @@ public class StringParserA implements StringParser {
     private FileReader fileReader;
 
     @Override
-    public void parse(TextAnalyzer analyzer, Flag flag, FileReader fileReader) throws IOException {
-        charChecker = new CharChecker();
+    public void parse(TextAnalyzer analyzer, Flag flag, FileReader fileReader, CharChecker charChecker) throws IOException {
+        this.charChecker = charChecker;
         this.analyzer = analyzer;
         this.flag = flag;
         this.fileReader = fileReader;
-        currentChar = 0;
 
-        while (flag.value()) {
             currentChar = (char) fileReader.read();
             if (currentChar == '\uFFFF') {
-                fileReader.close();
+                stopParsing();
                 return;
             }
 
@@ -33,9 +31,13 @@ public class StringParserA implements StringParser {
             }
 
             if ('А' <= currentChar && currentChar <= 'я') {
-                    parseWord();
+                parseWord();
             }
-        }
+    }
+
+    private void stopParsing() throws IOException {
+        flag.setValue(false);
+        System.out.println("Illegal character found, stop parsing: " + currentChar);
         fileReader.close();
     }
 

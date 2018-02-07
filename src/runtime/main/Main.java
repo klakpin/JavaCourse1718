@@ -13,16 +13,13 @@ public class Main {
         TextAnalyzer analyzer = new TextAnalyzer();
         ThreadDispatcher dispatcher = new ThreadDispatcher(analyzer);
 
-//        FileReader fr1 = new FileReader("i1.txt");
-//        FileReader fr2 = new FileReader("i2.txt");
-        FileReader fr3 = new FileReader("i3.txt");
-        FileReader fr4 = new FileReader("i4.txt");
+        FileReader fr = new FileReader("i1.txt");
+        FileReader fr2 = new FileReader("i2.txt");
 
         ArrayList<FileReader> readers = new ArrayList<>();
-//        readers.add(fr1);
-//        readers.add(fr2);
-        readers.add(fr3);
-        readers.add(fr4);
+
+        readers.add(fr);
+        readers.add(fr2);
 
         dispatcher.calculateWords(readers);
 
