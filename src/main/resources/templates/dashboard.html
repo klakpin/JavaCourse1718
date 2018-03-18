@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<h1>Hello world!</h1>
+
+<!--/*@thymesVar id="message" type="String"*/-->
+<div th:if="${message}">
+    <p th:utext="${message}"></p>
+</div>
+
+<form method="post" th:action="@{/training/add}">
+    <input type="hidden" name="action" value="create">
+    <input type="date" name="date">
+    <input type="time" name="time">
+    <input type="submit" value="create">
+</form>
+
+<table>
+    <tr>
+        <th>Training date and time</th>
+        <th>Rating</th>
+        <th>Link</th>
+    </tr>
+    <tr th:each="training : ${trainingsList}">
+        <td th:utext="${training.getDateTime()}"></td>
+        <td th:utext="${training.getRating()}"></td>
+        <td><a th:href="'/training/' + ${training.getId()}">Link</a> </td>
+    </tr>
+
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+</html>
